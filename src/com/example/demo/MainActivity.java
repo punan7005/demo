@@ -5,6 +5,7 @@ import org.apache.http.client.UserTokenHandler;
 import com.example.demo.service.LoginService;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -36,8 +37,13 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				userName = userNameEditText.getText().toString();
 				passWord = passWordEditText.getText().toString();
-				loginService = new LoginService();
-				loginService.login(userName, passWord);
+				System.out.println(userName);
+				System.out.println(passWord);
+//				loginService = new LoginService();
+//				boolean flag = loginService.login(userName, passWord);
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, TheForwardTest.class);
+				startActivity(intent);
 			}
 		});
     }
