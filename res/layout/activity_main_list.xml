@@ -13,22 +13,4 @@
         android:layout_height="wrap_content"
         android:text="跳转一下" />
 
-    <Button
-        android:id="@+id/getlist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="getlist" />
-
-    <Button
-        android:id="@+id/getMap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="getMap" />
-    
-    <Button
-        android:id="@+id/getGPS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="getGPS" />
-    
 </LinearLayout>
