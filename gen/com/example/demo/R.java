@@ -15,6 +15,7 @@ public final class R {
     }
     public static final class id {
         public static final int bmapView=0x7f050006;
+        public static final int getAmap=0x7f05000c;
         public static final int getGPS=0x7f05000b;
         public static final int getMap=0x7f05000a;
         public static final int getlist=0x7f050009;

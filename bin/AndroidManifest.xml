@@ -61,9 +61,12 @@
             </intent-filter>
         </activity>
         <!-- 高德地图 -->
-        <activity android:name="com.amap.demo.LocationManager" >
+        <activity 
+            android:name="com.example.demo.AmapActivity"
+            android:label="@string/app_name" >
              <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
              </intent-filter>
          </activity>
@@ -75,6 +78,7 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="399e209a617ada8b72258c6e77e2cbf4"/>
+        
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
@@ -110,5 +114,5 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 </manifest>

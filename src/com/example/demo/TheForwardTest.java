@@ -22,6 +22,8 @@ public class TheForwardTest extends Activity {
 		
 		final Button getGpsButton = (Button)this.findViewById(R.id.getGPS);
 		
+		final Button getAmapButton = (Button)this.findViewById(R.id.getAmap);
+		
 		getlistButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -51,6 +53,17 @@ public class TheForwardTest extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
 				intent.setClass(TheForwardTest.this, GpsActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		getAmapButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+				intent.setClass(TheForwardTest.this, AmapActivity.class);
 				startActivity(intent);
 			}
 		});

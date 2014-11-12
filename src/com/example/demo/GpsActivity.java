@@ -29,7 +29,7 @@ public class GpsActivity extends Activity{
         
         gpsInfo = (TextView)this.findViewById(R.id.textViewforps);
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        locationManager.setTestProviderEnabled("gps", true);
+//        locationManager.setTestProviderEnabled("gps", true);
         //为获取地理位置信息时设置查询条件
         String bestProvider = locationManager.getBestProvider(getCriteria(), true);
         
