@@ -1,14 +1,21 @@
 package com.example.demo;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
+import com.amap.api.location.LocationProviderProxy;
 import com.amap.api.maps2d.AMap;
+import com.amap.api.maps2d.AMapOptions;
+import com.amap.api.maps2d.LocationSource;
 import com.amap.api.maps2d.LocationSource.OnLocationChangedListener;
 import com.amap.api.maps2d.MapView;
 
 import android.app.Activity;
+import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 
-public class AmapActivity extends Activity{
+public class AmapActivity extends Activity implements LocationSource, AMapLocationListener{
 	
 	private MapView mapView;
 	private AMap aMap;
@@ -31,7 +38,17 @@ public class AmapActivity extends Activity{
     private void init() {
         if (aMap == null) {
             aMap = mapView.getMap();
+            setUpMap();
         }
+    }
+    
+    private void setUpMap() {
+        aMap.setLocationSource(this);// 设置定位监听
+//        aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
+        aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
+        // 设置定位的类型为定位模式：定位（AMap.LOCATION_TYPE_LOCATE）、跟随（AMap.LOCATION_TYPE_MAP_FOLLOW）
+        // 地图根据面向方向旋转（AMap.LOCATION_TYPE_MAP_ROTATE）三种模式
+//        aMap.setMyLocationType(AMap.);
     }
  
     /**
@@ -69,4 +86,77 @@ public class AmapActivity extends Activity{
         super.onDestroy();
         mapView.onDestroy();
     }
+
+    
+    /**
+     * 定位成功后回调函数
+     */
+    @Override
+    public void onLocationChanged(AMapLocation amapLocation) {
+        if (mListener != null && amapLocation != null) {
+            if (amapLocation.getAMapException().getErrorCode() == 0) {
+                mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
+                Log.i("当前海拔：", String.valueOf(amapLocation.getAltitude()));
+                Log.i("当前精度：", String.valueOf(amapLocation.getLatitude()));
+                Log.i("当前纬度：", String.valueOf(amapLocation.getLongitude()));
+            }
+        }
+    }
+    
+
+	@Override
+	public void onProviderDisabled(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderEnabled(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+     * 激活定位
+     */
+	@Override
+	public void activate(OnLocationChangedListener listener) {
+		// TODO Auto-generated method stub
+		mListener = listener;
+        if (mAMapLocationManager == null) {
+            mAMapLocationManager = LocationManagerProxy.getInstance(this);
+            //此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
+            //注意设置合适的定位时间的间隔，并且在合适时间调用removeUpdates()方法来取消定位请求
+            //在定位结束后，在合适的生命周期调用destroy()方法     
+            //其中如果间隔时间为-1，则定位只定一次
+            mAMapLocationManager.requestLocationData(
+            		LocationProviderProxy.AMapNetwork, 1000, 10, this);
+        }
+	}
+
+	/**
+     * 停止定位
+     */
+    @Override
+	public void deactivate() {
+		// TODO Auto-generated method stub
+		mListener = null;
+        if (mAMapLocationManager != null) {
+            mAMapLocationManager.removeUpdates(this);
+            mAMapLocationManager.destroy();
+        }
+        mAMapLocationManager = null;
+	}
+
+	@Override
+	public void onLocationChanged(Location arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }
