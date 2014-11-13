@@ -9,8 +9,12 @@ import com.amap.api.maps2d.AMapOptions;
 import com.amap.api.maps2d.LocationSource;
 import com.amap.api.maps2d.LocationSource.OnLocationChangedListener;
 import com.amap.api.maps2d.MapView;
+import com.amap.api.maps2d.model.LatLng;
+import com.amap.api.maps2d.model.Marker;
+import com.amap.api.maps2d.model.MarkerOptions;
 
 import android.app.Activity;
+import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -99,6 +103,11 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
                 Log.i("当前海拔：", String.valueOf(amapLocation.getAltitude()));
                 Log.i("当前精度：", String.valueOf(amapLocation.getLatitude()));
                 Log.i("当前纬度：", String.valueOf(amapLocation.getLongitude()));
+                MarkerOptions mo = new MarkerOptions();
+                LatLng ll = new LatLng(amapLocation.getLatitude(), amapLocation.getLongitude());
+                mo.position(ll);
+                aMap.addMarker(mo);
+                
             }
         }
     }
@@ -135,8 +144,10 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
             //注意设置合适的定位时间的间隔，并且在合适时间调用removeUpdates()方法来取消定位请求
             //在定位结束后，在合适的生命周期调用destroy()方法     
             //其中如果间隔时间为-1，则定位只定一次
+//            mAMapLocationManager.requestLocationData(
+//            		LocationProviderProxy.AMapNetwork, 6000, 1, this);
             mAMapLocationManager.requestLocationData(
-            		LocationProviderProxy.AMapNetwork, 1000, 10, this);
+            		LocationManagerProxy.GPS_PROVIDER, 6000, 1, this);
         }
 	}
 
