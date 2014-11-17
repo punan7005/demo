@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/map_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_weight="3" 
-    tools:context="${packageName}.${activityClass}" >
-
+    android:layout_height="match_parent" >
     <com.amap.api.maps2d.MapView 
 	   xmlns:android="http://schemas.android.com/apk/res/android"
 	   android:id="@+id/map"
 	   android:layout_width="fill_parent"
-	   android:layout_height="fill_parent" />
-</LinearLayout>
+	   android:layout_height="fill_parent" >
+
+
+    </com.amap.api.maps2d.MapView>
+
+    <TextView
+        android:id="@+id/getLongitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textColor="#FF0000FF"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/getLatitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/getLongitude"
+        android:layout_marginTop="30dp"
+        android:textColor="#FF0000FF"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/getAltitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/getLatitude"
+        android:layout_marginTop="32dp"
+        android:textColor="#FF0000FF"
+        android:text="TextView" />
+    
+</RelativeLayout>

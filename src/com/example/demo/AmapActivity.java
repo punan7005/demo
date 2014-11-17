@@ -18,6 +18,7 @@ import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 public class AmapActivity extends Activity implements LocationSource, AMapLocationListener{
 	
@@ -25,6 +26,10 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
 	private AMap aMap;
 	private OnLocationChangedListener mListener;
     private LocationManagerProxy mAMapLocationManager;
+    
+    private TextView getAltitude;
+    private TextView getLatitude;
+    private TextView getLongitude;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,9 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
         //运行高德地图
         mapView = (MapView)findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
+        getAltitude = (TextView)findViewById(R.id.getAltitude);
+        getLatitude = (TextView)findViewById(R.id.getLatitude);
+        getLongitude = (TextView)findViewById(R.id.getLongitude);
         this.init();
 	}
 	
@@ -101,10 +109,19 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
             if (amapLocation.getAMapException().getErrorCode() == 0) {
                 mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
                 Log.i("当前海拔：", String.valueOf(amapLocation.getAltitude()));
-                Log.i("当前精度：", String.valueOf(amapLocation.getLatitude()));
-                Log.i("当前纬度：", String.valueOf(amapLocation.getLongitude()));
+                Log.i("当前纬度：", String.valueOf(amapLocation.getLatitude()));
+                Log.i("当前经度：", String.valueOf(amapLocation.getLongitude()));
                 MarkerOptions mo = new MarkerOptions();
                 LatLng ll = new LatLng(amapLocation.getLatitude(), amapLocation.getLongitude());
+                if(amapLocation != null){
+                	getAltitude.setText("海拔：" + String.valueOf(amapLocation.getAltitude()));
+                	getLatitude.setText("纬度：" + String.valueOf(amapLocation.getLatitude()));
+                	getLongitude.setText("经度：" + String.valueOf(amapLocation.getLongitude()));
+                }else{
+                	getAltitude.setText("null");
+                	getLatitude.setText("null");
+                	getLongitude.setText("null");
+                }
                 mo.position(ll);
                 aMap.addMarker(mo);
                 
