@@ -12,8 +12,7 @@ public class dbTools extends SQLiteOpenHelper{
     private static final int version = 1; //Êý¾Ý¿â°æ±¾
     
     
-	public dbTools(Context context, String name, CursorFactory factory,
-			int version) {
+	public dbTools(Context context) {
 		super(context, DB_NAME, null, version);
 		// TODO Auto-generated constructor stub
 	}
