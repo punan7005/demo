@@ -20,7 +20,11 @@ public class dbTools extends SQLiteOpenHelper{
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		 String sql = "create table user(username varchar(20) not null , password varchar(60) not null );";          
+		 String sql = "create table user("
+		 		+ "createTime varchar(20) not null , "
+		 		+ "currLatitude varchar(60) not null "
+		 		+ "currLatitude varchar(60) not null "
+		 		+ ");";          
 	     db.execSQL(sql);
 	}
 

@@ -6,13 +6,11 @@ public class Loonp {
 	
 	private String Id;
 	private String createTime;
-	private String endTiem;
+	private String endTime;
 	private String createUserId;
 	private integer totalTime;
 	private integer totalM;
-	private integer totalclimbM;
-	private LoonpCondition loonpCondition;
-	
+	private integer totalclimbM;	
 	
 	public String getId() {
 		return Id;
@@ -27,10 +25,10 @@ public class Loonp {
 		this.createTime = createTime;
 	}
 	public String getEndTiem() {
-		return endTiem;
+		return endTime;
 	}
 	public void setEndTiem(String endTiem) {
-		this.endTiem = endTiem;
+		this.endTime = endTiem;
 	}
 	public String getCreateUserId() {
 		return createUserId;
@@ -55,11 +53,5 @@ public class Loonp {
 	}
 	public void setTotalclimbM(integer totalclimbM) {
 		this.totalclimbM = totalclimbM;
-	}
-	public LoonpCondition getLoonpCondition() {
-		return loonpCondition;
-	}
-	public void setLoonpCondition(LoonpCondition loonpCondition) {
-		this.loonpCondition = loonpCondition;
 	}
 }

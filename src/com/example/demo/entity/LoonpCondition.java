@@ -6,8 +6,14 @@ public class LoonpCondition {
 	private Double currAltitude;
 	private Double currLatitude;
 	private Double currLongitude;
+	private String loonpId;
 	
-	
+	public String getLoonpId() {
+		return loonpId;
+	}
+	public void setLoonpId(String loonpId) {
+		this.loonpId = loonpId;
+	}
 	public String getCreateTime() {
 		return createTime;
 	}
