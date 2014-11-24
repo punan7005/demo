@@ -12,6 +12,9 @@ import com.amap.api.maps2d.MapView;
 import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
+import com.example.demo.dao.LoonpConditionDao;
+import com.example.demo.entity.LoonpCondition;
+import com.example.demo.service.DBTools;
 
 import android.app.Activity;
 import android.location.Address;
@@ -30,6 +33,9 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
     private TextView getAltitude;
     private TextView getLatitude;
     private TextView getLongitude;
+    
+    private LoonpCondition loonpCondition;
+    private LoonpConditionDao loonpConditionDao;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,8 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
         getAltitude = (TextView)findViewById(R.id.getAltitude);
         getLatitude = (TextView)findViewById(R.id.getLatitude);
         getLongitude = (TextView)findViewById(R.id.getLongitude);
+        //初始化数据库连接
+        loonpConditionDao = new LoonpConditionDao(this);
         this.init();
 	}
 	
@@ -124,7 +132,13 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
                 }
                 mo.position(ll);
                 aMap.addMarker(mo);
-                
+                //插入数据库记录坐标点
+                loonpCondition = new LoonpCondition();
+                loonpCondition.setCreateTime(DateUtils.getDateTime());
+                loonpCondition.setCurrAltitude(amapLocation.getAltitude());
+                loonpCondition.setCurrLatitude(amapLocation.getLatitude());
+                loonpCondition.setCurrLongitude(amapLocation.getLongitude());
+                loonpConditionDao.insert(loonpCondition);
             }
         }
     }
