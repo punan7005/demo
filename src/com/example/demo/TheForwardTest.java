@@ -24,6 +24,8 @@ public class TheForwardTest extends Activity {
 		
 		final Button getAmapButton = (Button)this.findViewById(R.id.getAmap);
 		
+		final Button getAmapHistoryButton = (Button)this.findViewById(R.id.getAmapHistory);
+		
 		getlistButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -64,6 +66,17 @@ public class TheForwardTest extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
 				intent.setClass(TheForwardTest.this, AmapActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		getAmapHistoryButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+				intent.setClass(TheForwardTest.this, AmapActivityForHistory.class);
 				startActivity(intent);
 			}
 		});

@@ -17,6 +17,7 @@ public final class R {
         public static final int bmapView=0x7f050006;
         public static final int getAltitude=0x7f05000c;
         public static final int getAmap=0x7f050010;
+        public static final int getAmapHistory=0x7f050011;
         public static final int getGPS=0x7f05000f;
         public static final int getLatitude=0x7f05000b;
         public static final int getLongitude=0x7f05000a;
@@ -38,7 +39,8 @@ public final class R {
         public static final int activity_main_list=0x7f030002;
         public static final int activity_main_map=0x7f030003;
         public static final int activity_main_map_amap=0x7f030004;
-        public static final int activity_main_two=0x7f030005;
+        public static final int activity_main_map_amap_history=0x7f030005;
+        public static final int activity_main_two=0x7f030006;
     }
     public static final class string {
         public static final int app_name=0x7f040000;

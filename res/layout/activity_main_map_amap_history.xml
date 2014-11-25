@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/map_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <com.amap.api.maps2d.MapView 
+	   xmlns:android="http://schemas.android.com/apk/res/android"
+	   android:id="@+id/map"
+	   android:layout_width="fill_parent"
+	   android:layout_height="fill_parent" >
+
+
+    </com.amap.api.maps2d.MapView>
+
+    
+
+    <TextView
+        android:id="@+id/getAltitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/getLatitude"
+        android:layout_marginTop="32dp"
+        android:textColor="#FF0000FF"
+        android:text="i am history ~!!!" />
+    
+</RelativeLayout>

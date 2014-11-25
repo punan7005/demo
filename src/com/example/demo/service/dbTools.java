@@ -10,7 +10,7 @@ public class DBTools extends SQLiteOpenHelper{
 
 	
 	private static final String DB_NAME = "testdb.db"; //数据库名称
-    private static final int version = 1; //数据库版本
+    private static final int version = 2; //数据库版本
     
     
 	public DBTools(Context context) {
@@ -23,8 +23,9 @@ public class DBTools extends SQLiteOpenHelper{
 		// TODO Auto-generated method stub
 		 String sql = "create table loonpCondition("
 		 		+ "createTime TEXT, "
-		 		+ "currLatitude REAL"
-		 		+ "currLongitude REAL"
+		 		+ "currAltitude REAL, "
+		 		+ "currLatitude REAL,"
+		 		+ "currLongitude REAL,"
 		 		+ "loonpId TEXT"
 		 		+ ");"
 		 		+ "create table loonp("
