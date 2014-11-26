@@ -71,9 +71,20 @@
              </intent-filter>
          </activity>
          
-        <!-- 高德地图-历史轨迹 -->
+        <!-- 高德地图-历史轨迹展示 -->
         <activity 
             android:name="com.example.demo.AmapActivityForHistory"
+            android:label="@string/app_name" >
+             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
+         
+        <!-- 高德地图-历史列表 -->
+        <activity 
+            android:name="com.example.demo.TheListForAMapHistory"
             android:label="@string/app_name" >
              <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

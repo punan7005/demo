@@ -43,4 +43,10 @@
         android:layout_height="wrap_content"
         android:text="getAmapHistory" />
     
+    
+    <Button
+        android:id="@+id/getlistforhistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="getlistforhistory" />
 </LinearLayout>

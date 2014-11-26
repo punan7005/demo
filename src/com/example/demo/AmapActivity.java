@@ -13,6 +13,8 @@ import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
 import com.example.demo.dao.LoonpConditionDao;
+import com.example.demo.dao.LoonpDao;
+import com.example.demo.entity.Loonp;
 import com.example.demo.entity.LoonpCondition;
 import com.example.demo.service.DBTools;
 
@@ -36,6 +38,8 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
     
     private LoonpCondition loonpCondition;
     private LoonpConditionDao loonpConditionDao;
+    private LoonpDao loonpDao;
+    private String loonpId;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,13 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
         getLongitude = (TextView)findViewById(R.id.getLongitude);
         //初始化数据库连接
         loonpConditionDao = new LoonpConditionDao(this);
+        loonpDao = new LoonpDao(this);
+        Loonp loonp = new Loonp();
+        loonp.setId(UuidFactory.getUuid());
+        loonp.setStartTime(DateUtils.getDateTime());
+        loonp.setCreateTime(DateUtils.getDateTime());
+        loonpDao.insert(loonp);
+        loonpId = loonpDao.findLastOneId();
         this.init();
 	}
 	
@@ -105,6 +116,8 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+        loonpConditionDao.close();
+        loonpDao.close();
     }
 
     
@@ -138,10 +151,12 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
                 loonpCondition.setCurrAltitude(amapLocation.getAltitude());
                 loonpCondition.setCurrLatitude(amapLocation.getLatitude());
                 loonpCondition.setCurrLongitude(amapLocation.getLongitude());
+                loonpCondition.setLoonpId(loonpId);
                 Log.i("插入时间", loonpCondition.getCreateTime());
                 Log.i("插入海拔", String.valueOf(loonpCondition.getCurrAltitude()));
                 Log.i("插入维度", String.valueOf(loonpCondition.getCurrLatitude()));
                 Log.i("插入精度", String.valueOf(loonpCondition.getCurrLongitude()));
+                Log.i("插入主id", loonpCondition.getLoonpId());
                 loonpConditionDao.insert(loonpCondition);
             }
         }

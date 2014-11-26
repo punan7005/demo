@@ -21,14 +21,15 @@ public class DBTools extends SQLiteOpenHelper{
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		 String sql = "create table loonpCondition("
+		 String sqltable0 = "create table loonpCondition("
 		 		+ "createTime TEXT, "
 		 		+ "currAltitude REAL, "
 		 		+ "currLatitude REAL,"
 		 		+ "currLongitude REAL,"
 		 		+ "loonpId TEXT"
 		 		+ ");"
-		 		+ "create table loonp("
+		 		;
+		 String sqltable1 = "create table loonp("
 		 		+ "Id TEXT, "
 		 		+ "createTime TEXT, "
 		 		+ "startTime TEXT, "
@@ -37,9 +38,11 @@ public class DBTools extends SQLiteOpenHelper{
 		 		+ "totalTime REAL, "
 		 		+ "totalM REAL, "
 		 		+ "totalclimbM REAL, "
+		 		+ "status INTEGER "
 		 		+ ");"
-		 		;   
-	     db.execSQL(sql);
+		 		;
+	     db.execSQL(sqltable0);
+	     db.execSQL(sqltable1);
 	     Log.i("创建成功了","");
 	}
 

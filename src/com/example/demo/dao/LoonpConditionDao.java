@@ -47,9 +47,9 @@ public class LoonpConditionDao {
 	}
 	
 	public List<LoonpCondition> findByMap(Map<String, Object> message){
-		String sql ="select * from loonpCondition where createTime like ?";
+		String sql ="select * from loonpCondition where loonpId = ?";
 		List<LoonpCondition> lcList = new ArrayList<LoonpCondition>();
-		Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{message.get("createTime").toString()+"%"});
+		Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{message.get("loonpId").toString()});
 		if(cursor.moveToFirst()){
 //			for(int i = 0; i < cursor.getCount(); i++){
 //				cursor.move(i);
@@ -69,5 +69,9 @@ public class LoonpConditionDao {
 			}
 		}
 		return lcList;
+	}
+	
+	public void close(){
+		sqLiteDatabase.close();
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.amap.api.maps2d.AMap;
@@ -23,6 +24,8 @@ public class AmapActivityForHistory extends Activity{
     private LoonpCondition loonpCondition;
     private LoonpConditionDao loonpConditionDao;
     
+    private String Id;
+    
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,17 @@ public class AmapActivityForHistory extends Activity{
         mapView.onCreate(savedInstanceState);// 必须要写
         loonpConditionDao =new LoonpConditionDao(this);
         init();
+        
+        //接受传递数据
+//        Intent intent = getIntent();
+//        Bundle bundle = intent.getExtras();
+//        String strContentString = bundle.getString("fromMain");
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        Id = bundle.getString("Id");
+        
         Map<String, Object> message = new HashMap<String, Object>();
-        message.put("createTime", "2014-11-25");
+        message.put("loonpId", Id);
         List<LoonpCondition> lcList = loonpConditionDao.findByMap(message);
         for(int i = 0; i < lcList.size(); i++){
         	loonpCondition = lcList.get(i);
@@ -88,5 +100,6 @@ public class AmapActivityForHistory extends Activity{
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+        loonpConditionDao.close();
     }
 }
