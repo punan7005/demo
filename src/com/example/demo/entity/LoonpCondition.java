@@ -7,7 +7,14 @@ public class LoonpCondition {
 	private Double currLatitude;
 	private Double currLongitude;
 	private String loonpId;
+	private long currMS;
 	
+	public long getCurrMS() {
+		return currMS;
+	}
+	public void setCurrMS(long currMS) {
+		this.currMS = currMS;
+	}
 	public String getLoonpId() {
 		return loonpId;
 	}

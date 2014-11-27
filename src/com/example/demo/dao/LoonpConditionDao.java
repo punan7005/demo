@@ -30,14 +30,17 @@ public class LoonpConditionDao {
 				+ "currAltitude,"
 				+ "currLatitude,"
 				+ "currLongitude,"
-				+ "loonpId) values (?,?,?,?,?);"
+				+ "loonpId,"
+				+ "currMS"
+				+ ") values (?,?,?,?,?,?);"
 				;
 		sqLiteDatabase.execSQL(sql, new Object[]{
 				loonpCondition.getCreateTime(),
 				loonpCondition.getCurrAltitude(),
 				loonpCondition.getCurrLatitude(),
 				loonpCondition.getCurrLongitude(),
-				loonpCondition.getLoonpId()
+				loonpCondition.getLoonpId(),
+				loonpCondition.getCurrMS()
 		});
 		Log.i("Insert one", "... ...");
 		Log.i("≤Â»Î ±º‰", loonpCondition.getCreateTime());
@@ -65,6 +68,7 @@ public class LoonpConditionDao {
 				lc.setCurrAltitude(cursor.getDouble(cursor.getColumnIndex("currAltitude")));
 				lc.setCurrLatitude(cursor.getDouble(cursor.getColumnIndex("currLatitude")));
 				lc.setCurrLongitude(cursor.getDouble(cursor.getColumnIndex("currLongitude")));
+				lc.setCurrMS(cursor.getLong(cursor.getColumnIndex("currMS")));
 				lcList.add(lc);
 			}
 		}

@@ -7,6 +7,7 @@ import java.util.Map;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.amap.api.maps2d.AMap;
 import com.amap.api.maps2d.MapView;
@@ -15,6 +16,7 @@ import com.amap.api.maps2d.model.MarkerOptions;
 import com.example.demo.dao.LoonpConditionDao;
 import com.example.demo.entity.LoonpCondition;
 import com.example.demo.service.DBTools;
+import com.example.demo.tools.AMapTools;
 
 public class AmapActivityForHistory extends Activity{
 	
@@ -25,6 +27,9 @@ public class AmapActivityForHistory extends Activity{
     private LoonpConditionDao loonpConditionDao;
     
     private String Id;
+    private LatLng startLatLng;
+    private LatLng endlatLatLng;
+    private Float totleM;
     
     
     @Override
@@ -53,8 +58,11 @@ public class AmapActivityForHistory extends Activity{
         	MarkerOptions mo = new MarkerOptions();
         	LatLng ll = new LatLng(loonpCondition.getCurrLatitude(), loonpCondition.getCurrLongitude());
         	mo.position(ll);
-        	aMap.addMarker(mo);
+        	aMap.addMarker(mo); 
         }
+        
+        final TextView totalMeter = (TextView)findViewById(R.id.getTotalMeter);
+        totalMeter.setText("总行程：" + AMapTools.getTotalMeter(lcList) + "米");
     }
  
     /**

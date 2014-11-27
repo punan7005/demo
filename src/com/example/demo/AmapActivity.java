@@ -152,6 +152,7 @@ public class AmapActivity extends Activity implements LocationSource, AMapLocati
                 loonpCondition.setCurrLatitude(amapLocation.getLatitude());
                 loonpCondition.setCurrLongitude(amapLocation.getLongitude());
                 loonpCondition.setLoonpId(loonpId);
+                loonpCondition.setCurrMS(System.currentTimeMillis());
                 Log.i("插入时间", loonpCondition.getCreateTime());
                 Log.i("插入海拔", String.valueOf(loonpCondition.getCurrAltitude()));
                 Log.i("插入维度", String.valueOf(loonpCondition.getCurrLatitude()));

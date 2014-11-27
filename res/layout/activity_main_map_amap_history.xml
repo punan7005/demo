@@ -9,19 +9,26 @@
 	   android:layout_width="fill_parent"
 	   android:layout_height="fill_parent" >
 
-
     </com.amap.api.maps2d.MapView>
 
-    
-
     <TextView
-        android:id="@+id/getAltitude"
+        android:id="@+id/getTotalMeter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/getLatitude"
-        android:layout_marginTop="32dp"
-        android:textColor="#FF0000FF"
-        android:text="i am history ~!!!" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="70dp"
+        android:text="i am history ~!!!"
+        android:textColor="#FF0000FF" />
+
+    <TextView
+        android:id="@+id/getHello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/getTotalMeter"
+        android:layout_marginTop="94dp"
+        android:text="i am history ~!!!"
+        android:textColor="#FF0000FF" />
     
 </RelativeLayout>

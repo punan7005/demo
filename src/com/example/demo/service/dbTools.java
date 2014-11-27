@@ -26,7 +26,8 @@ public class DBTools extends SQLiteOpenHelper{
 		 		+ "currAltitude REAL, "
 		 		+ "currLatitude REAL,"
 		 		+ "currLongitude REAL,"
-		 		+ "loonpId TEXT"
+		 		+ "loonpId TEXT,"
+		 		+ "currMS INTEGER"
 		 		+ ");"
 		 		;
 		 String sqltable1 = "create table loonp("
