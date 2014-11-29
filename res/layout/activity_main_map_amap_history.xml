@@ -18,17 +18,28 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="70dp"
-        android:text="i am history ~!!!"
+        android:text="i am TotalMeter ~!!!"
         android:textColor="#FF0000FF" />
-
+    
     <TextView
-        android:id="@+id/getHello"
+        android:id="@+id/getAV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/getTotalMeter"
         android:layout_marginTop="94dp"
-        android:text="i am history ~!!!"
+        android:text="i am AV ~!!!"
         android:textColor="#FF0000FF" />
+
+    <TextView
+        android:id="@+id/getTotalTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/getTotalMeter"
+        android:layout_marginTop="35dp"
+        android:text="i am TotalTime ~!!!"
+        android:textColor="#FF0000FF" />
+
     
 </RelativeLayout>

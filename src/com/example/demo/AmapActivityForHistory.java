@@ -62,7 +62,13 @@ public class AmapActivityForHistory extends Activity{
         }
         
         final TextView totalMeter = (TextView)findViewById(R.id.getTotalMeter);
-        totalMeter.setText("总行程：" + AMapTools.getTotalMeter(lcList) + "米");
+        final TextView totalTime = (TextView)findViewById(R.id.getTotalTime);
+        final TextView totalAV = (TextView)findViewById(R.id.getAV);
+        
+        AMapTools atTools = new AMapTools(lcList);
+        totalMeter.setText("总行程：" + atTools.getTotalMeter() + "米");
+        totalTime.setText("总用时" + atTools.getTotalTime() + "分");
+        totalAV.setText("平均" + atTools.getTotalAV() + "km/h");
     }
  
     /**
