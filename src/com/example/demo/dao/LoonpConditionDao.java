@@ -53,7 +53,6 @@ public class LoonpConditionDao {
 		String sql ="select * from loonpCondition where loonpId = ? order by createTime desc;";
 		List<LoonpCondition> lcList = new ArrayList<LoonpCondition>();
 		Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{message.get("loonpId").toString()});
-		if(cursor.moveToFirst()){
 //			for(int i = 0; i < cursor.getCount(); i++){
 //				cursor.move(i);
 //				LoonpCondition lc = new LoonpCondition();
@@ -71,7 +70,6 @@ public class LoonpConditionDao {
 				lc.setCurrMS(cursor.getLong(cursor.getColumnIndex("currMS")));
 				lcList.add(lc);
 			}
-		}
 		return lcList;
 	}
 	

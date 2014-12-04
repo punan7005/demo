@@ -63,14 +63,12 @@ public class LoonpDao {
 		String sql = "select * from loonp";
 		List<Loonp> loonpList = new ArrayList<Loonp>(); 
 		Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
-			if(cursor.moveToFirst()){
 				while(cursor.moveToNext()){
 					Loonp loonp = new Loonp();
 					loonp.setCreateTime(cursor.getString(cursor.getColumnIndex("createTime")));
 					loonp.setId(cursor.getString(cursor.getColumnIndex("Id")));
 					loonpList.add(loonp);
 				}
-			}
 		return loonpList;
 	}
 	

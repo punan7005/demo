@@ -41,5 +41,14 @@
         android:text="i am TotalTime ~!!!"
         android:textColor="#FF0000FF" />
 
+    <TextView
+        android:id="@+id/getFastKMH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/getAV"
+        android:layout_marginTop="52dp"
+        android:text="i am fastKMH ~!!!"
+        android:textColor="#FF0000FF" />
     
 </RelativeLayout>

@@ -79,4 +79,33 @@ public class AMapTools {
 		//0.06
 		return totalAV;
 	}
+	
+	/** 
+	 * 方法说明 :获取行程内最高时速
+	 * @author  joker 
+	 * 创建时间：
+	 * <p>@param LoonpCondition list</p>
+	 */
+	public float getTotalFastKM(){
+		LatLng startLatLng = null;
+		LatLng endLatLng = null;
+		float tempFastKmH = 0;
+		float tempTime = 0;
+		float fastKmH = 0;
+		float tempMeter = 0;
+		for(int i = 0; i < list.size(); i++){
+			if(i != 0){
+				startLatLng = new LatLng(list.get(i - 1).getCurrLatitude(), list.get(i - 1).getCurrLongitude());
+				endLatLng = new LatLng(list.get(i).getCurrLatitude(), list.get(i).getCurrLongitude());
+				tempMeter = AMapUtils.calculateLineDistance(startLatLng, endLatLng);
+				tempTime = list.get(i-1).getCurrMS() - list.get(i).getCurrMS();
+				tempFastKmH = (tempMeter / 1000) / (tempTime / 1000 / 60 / 60);
+				if(tempFastKmH > fastKmH){
+					fastKmH = tempFastKmH;
+				}
+			}
+		}
+		return fastKmH;
+	}
+	
 }
